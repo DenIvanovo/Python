@@ -7,9 +7,10 @@ import Scripts.BlackListOfClients
 credit = True
 
 #
-def loan_amount(loan_amount,credit_period):
-    ttt = int(loan_amount) / int(credit_period)
+def calculate_loan_amount(loan_amount,credit_period):
+    ttt= int(loan_amount) / int(credit_period)
     return ttt
+    print(ttt)
 
 
 
@@ -36,7 +37,7 @@ def Algoritm_Vidahi_Kredita (years):
             # Поучаем ответ на вопрос.
             credit_period = input("На какой срок хотите взять кредит (Укажите пожалуйста количество месяцев)") # срок кредитования.
             # Расчитываем сумму кредита по параметрам.
-            see = loan_amount(loan_amount,credit_period)
+            calculate = calculate_loan_amount(loan_amount,credit_period)
 
     elif sex_borrower == "woman":
         pass
@@ -44,10 +45,7 @@ def Algoritm_Vidahi_Kredita (years):
         print("Ошибка")
 
 
-# В это функции мы расчитаем сумма кредита (расчитаем помесячный платеж).
-def loan_amount(loan_amount,credit_period):
-    ееее = "сука "
-    print(eeee)
+
 
 
 # Получаем ответ.Фамилию ,Имя,Отчество.
