@@ -10,7 +10,7 @@ credit = True
 def calculate_loan_amount(loan_amount,credit_period):
     ttt= int(loan_amount) / int(credit_period)
     return ttt
-    print(ttt)
+
 
 
 
@@ -38,6 +38,7 @@ def Algoritm_Vidahi_Kredita (years):
             credit_period = input("На какой срок хотите взять кредит (Укажите пожалуйста количество месяцев)") # срок кредитования.
             # Расчитываем сумму кредита по параметрам.
             calculate = calculate_loan_amount(loan_amount,credit_period)
+            print(calculate)
 
     elif sex_borrower == "woman":
         pass
