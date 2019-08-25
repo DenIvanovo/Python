@@ -6,14 +6,26 @@ import Scripts.BlackListOfClients
 credit = True
 
 # Расчитывваеем сумму кредита.А также сумму каждомесячного взноса.
-def calculate_loan_amount(loan_amount,credit_period):
+def calculate_loan_amount(loan_amount,credit_period,monthly_income):
     # минимальные средства к существованию.
     minimum_livelihood = 10000
-    # Процентная ставка.
+    # Годовая процентнаяятаввка.
     interest_on_credit = 19.9
-    ttt= int(loan_amount) / int(credit_period)
-    return ttt
+    # Месяцная процентная ставка расчитываетться
+    # Вычисляем сумму процентов за веесь период кредита.
+    rate_of_interest = ( interest_on_credit / 12 ) * int(credit_period)
+    # долг банку только по процентам.
+    debt_to_Bank_interest_only = ((int(loan_amount) * rate_of_interest) / 100)
+    #Здесь мы выщитываем ежемесячная плату с учетом процентов.
+    monthly_fee = (int(loan_amount) + debt_to_Bank_interest_only ) / int(credit_period)
+    # Проверяем "если минимальные средства к существованию меньше (ежемесячный доход заёмщика  - ежемесячная плату с учетом процентов)
+    # если меньше тогда нужно перечитать сумму предита по другой форме и сообщить ето заямщику(клиент).
+    if minimum_livelihood > ( monthly_income -monthly_fee ):
 
+        return "По данным параметрам банк неможет выдать Вам сумму {0}  ".format(loan_amount)
+
+    else:
+        return monthly_fee
 
 
 
@@ -40,14 +52,14 @@ def Algoritm_Vidahi_Kredita (years,familia_mane_patronymic):
             # Поучаем ответ на вопрос.
             credit_period = input("На какой срок хотите взять кредит (Укажите пожалуйста количество месяцев)") # срок кредитования.
             # Расчитываем сумму кредита по параметрам.
-            calculate = calculate_loan_amount(loan_amount,credit_period)
+            calculate = calculate_loan_amount(loan_amount,credit_period,monthly_income)
             print(calculate)
 
     elif sex_borrower == "woman":
-        
+
         # Получаем ответ на вопрос"Какой ежемесячный доход заёмщика".
         monthly_income = int(input("Какой ежемесячный доход заёмщика?"))
-        
+
         # Получает ответ на вопрос "Какую сумму хотите взять в кредит ?".
         loan_amount = input("Какую сумму хотите взять в кредит ?") #Сумма кредита.
 
@@ -56,7 +68,7 @@ def Algoritm_Vidahi_Kredita (years,familia_mane_patronymic):
         # Расчитываем сумму кредита по параметрам.
         calculate = calculate_loan_amount(loan_amount,credit_period)
         print(calculate)
-         
+
     else:
         print("Ошибка")
 
@@ -99,10 +111,6 @@ else:
         # Если из функции пришел ответ True.
         # Вызоваем функцию для дальнейшего анализа данных.
         Algoritm_Vidahi_Kredita (years,familia_mane_patronymic)
-
-
-
-
 
 
 
