@@ -6,10 +6,10 @@ import Scripts.BlackListOfClients
 credit = True
 
 # Расчитывваеем сумму кредита.А также сумму каждомесячного взноса.
-def calculate_loan_amount(loan_amount,credit_period,monthly_income):
+def calculate_loan_amount(loan_amount,credit_period,monthly_income,familia_mane_patronymic):
     # минимальные средства к существованию.
     minimum_livelihood = 10000
-    # Годовая процентнаяятаввка.
+    # Годовая процентная ставка.
     interest_on_credit = 19.9
     # Месяцная процентная ставка расчитываетться
     # Вычисляем сумму процентов за веесь период кредита.
@@ -25,20 +25,18 @@ def calculate_loan_amount(loan_amount,credit_period,monthly_income):
         return "По данным параметрам банк неможет выдать Вам сумму {0}  ".format(loan_amount)
 
     else:
-        return monthly_fee
+        return "Уважаемый {0} кредит одобрен!.Ежемесяцнный платяж состовляет {1}".format(familia_mane_patronymic,monthly_fee)
 
 
 
 # В этой функции мы получаем дополнительный данные о заемщике,и делаем дополнительный анализ.
 def Algoritm_Vidahi_Kredita (years,familia_mane_patronymic):
 
-    sex_borrower = input("Ваш пол (man/woman) ?")
-    if sex_borrower == "man":
+    sex_borrower = input("Ваш пол (М/Ж) ?")
+    if sex_borrower == "М":
 
-        # Получаем ответ на вопрос"Какой ежемесячный доход заёмщика".
         monthly_income = int(input("Какой ежемесячный доход заёмщика?"))
 
-        # Получаем ответ на вопрос"У Вас есть военный билет?".
         military_ID = input("У Вас есть военный билет?")
         if  (years > 18 and military_ID == False) and (
                 years < 27 and military_ID == False):
@@ -46,27 +44,27 @@ def Algoritm_Vidahi_Kredita (years,familia_mane_patronymic):
             print("Извените {0} но Вам  отказано в кредите!".format(familia_mane_patronymic))
         else:
 
-            # Получает ответ на вопрос "Какую сумму хотите взять в кредит ?".
-            loan_amount = input("Какую сумму хотите взять в кредит ?") #Сумма кредита.
+            loan_amount = input("Какую сумму хотите взять в кредит ?") 
 
-            # Поучаем ответ на вопрос.
             credit_period = input("На какой срок хотите взять кредит (Укажите пожалуйста количество месяцев)") # срок кредитования.
             # Расчитываем сумму кредита по параметрам.
-            calculate = calculate_loan_amount(loan_amount,credit_period,monthly_income)
+            calculate = calculate_loan_amount(loan_amount,credit_period,monthly_income,familia_mane_patronymic)
+
             print(calculate)
 
-    elif sex_borrower == "woman":
+            input("""Мы готовы предложить Вам свою сумму! Нажмите 'Y'если Вам это интерестно,
+            или нажмите 'N' если Вам это неинтерестно.""")
 
-        # Получаем ответ на вопрос"Какой ежемесячный доход заёмщика".
+
+    elif sex_borrower == "Ж":
+
         monthly_income = int(input("Какой ежемесячный доход заёмщика?"))
 
-        # Получает ответ на вопрос "Какую сумму хотите взять в кредит ?".
-        loan_amount = input("Какую сумму хотите взять в кредит ?") #Сумма кредита.
+        loan_amount = input("Какую сумму хотите взять в кредит ?") 
 
-        # Поучаем ответ на вопрос.
         credit_period = input("На какой срок хотите взять кредит (Укажите пожалуйста количество месяцев)") # срок кредитования.
         # Расчитываем сумму кредита по параметрам.
-        calculate = calculate_loan_amount(loan_amount,credit_period)
+        calculate = calculate_loan_amount(loan_amount,credit_period,familia_mane_patronymic)
         print(calculate)
 
     else:
@@ -76,26 +74,24 @@ def Algoritm_Vidahi_Kredita (years,familia_mane_patronymic):
 
 
 
-# Получаем ответ.Фамилию ,Имя,Отчество.
+
 familia_mane_patronymic = input("""Скажите пожалуйста полностью Вашу: Фамилию,Имя,Отчество
 Используйте символы 'А-Я,а-я'
 Пример : 'Петров Игорь Витальевич'""")
 familia_mane_patronymic = familia_mane_patronymic.title()
 
-# Получем даные на вопрос.
 series_and_number = input("""Введите серию и номер паспорта
 Пример : 2100 668122 """)
 
-# Получаем ответ на вопрос"Дата рождения заемщика(клиента)".
 date_of_birth = input("""Введите полностью свою дату рождения
 Пример : 01.05.1990 """)
 # Проводим вычислительные действия с датой рождения.
 # а имено получаем год рождения.
 years_date_of_birth = int(date_of_birth[6:])
-god = time.localtime()
-god = int (god[0])
+this_year = time.localtime()
+this_year = int (this_year[0])
 # Выястняем сколько полных лет заямщику(клиент).
-years = god - years_date_of_birth
+years = this_year - years_date_of_birth
 
 if years <18 or years >65:
     credit = False
