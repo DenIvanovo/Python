@@ -44,28 +44,40 @@ def Algoritm_Vidahi_Kredita (years,familia_mane_patronymic):
             print("Извените {0} но Вам  отказано в кредите!".format(familia_mane_patronymic))
         else:
 
-            loan_amount = input("Какую сумму хотите взять в кредит ?") 
+            loan_amount = input("Какую сумму хотите взять в кредит ?")
 
-            credit_period = input("На какой срок хотите взять кредит (Укажите пожалуйста количество месяцев)") # срок кредитования.
+            credit_period = input("На какой срок хотите взять кредит (Укажите пожалуйста количество месяцев)")
             # Расчитываем сумму кредита по параметрам.
             calculate = calculate_loan_amount(loan_amount,credit_period,monthly_income,familia_mane_patronymic)
 
             print(calculate)
 
-            input("""Мы готовы предложить Вам свою сумму! Нажмите 'Y'если Вам это интерестно,
-            или нажмите 'N' если Вам это неинтерестно.""")
+            the_Banks_offer = input('Мы готовы предложить Вам свою сумму! Нажмите \'Y\'если Вам это интерестно,\n'
+                                    '                               или нажмите \'N\' если Вам это неинтерестно.')
+            if the_Banks_offer == "Y":
+                pass
+            else:
+                pass
 
 
     elif sex_borrower == "Ж":
 
         monthly_income = int(input("Какой ежемесячный доход заёмщика?"))
 
-        loan_amount = input("Какую сумму хотите взять в кредит ?") 
+        loan_amount = input("Какую сумму хотите взять в кредит ?")
 
-        credit_period = input("На какой срок хотите взять кредит (Укажите пожалуйста количество месяцев)") # срок кредитования.
+        credit_period = input("На какой срок хотите взять кредит (Укажите пожалуйста количество месяцев)")
         # Расчитываем сумму кредита по параметрам.
-        calculate = calculate_loan_amount(loan_amount,credit_period,familia_mane_patronymic)
+        calculate = calculate_loan_amount(loan_amount,credit_period,monthly_income,familia_mane_patronymic)
+
         print(calculate)
+
+        the_Banks_offer = input('Мы готовы предложить Вам свою сумму! Нажмите \'Y\'если Вам это интерестно,\n'
+                                    '                               или нажмите \'N\' если Вам это неинтерестно.')
+        if the_Banks_offer == "Y":
+            pass
+        else:
+            pass
 
     else:
         print("Ошибка")
@@ -73,40 +85,45 @@ def Algoritm_Vidahi_Kredita (years,familia_mane_patronymic):
 
 
 
-
-
-familia_mane_patronymic = input("""Скажите пожалуйста полностью Вашу: Фамилию,Имя,Отчество
-Используйте символы 'А-Я,а-я'
-Пример : 'Петров Игорь Витальевич'""")
-familia_mane_patronymic = familia_mane_patronymic.title()
-
-series_and_number = input("""Введите серию и номер паспорта
-Пример : 2100 668122 """)
-
-date_of_birth = input("""Введите полностью свою дату рождения
-Пример : 01.05.1990 """)
-# Проводим вычислительные действия с датой рождения.
-# а имено получаем год рождения.
-years_date_of_birth = int(date_of_birth[6:])
-this_year = time.localtime()
-this_year = int (this_year[0])
-# Выястняем сколько полных лет заямщику(клиент).
-years = this_year - years_date_of_birth
-
-if years <18 or years >65:
-    credit = False
-    print("Извените {0} но Вам отказано в кредите!".format(familia_mane_patronymic))
-
+print('Добро пожаловать в банк \'Одоряем всем\'')
+client = input('Являетесь ли вы клиентом нашего банка? \n'
+               'Нажмите Y-ДА,N-НЕТ')
+if client == "Y":
+    pass
 else:
-    # Вызываем функцию"Черный список"и в этой функцции анализируем персональные данные.
-    blacklist = Scripts.BlackListOfClients.Black_list_of_clients(familia_mane_patronymic,series_and_number,date_of_birth)
-    # Если из функции пришел ответ False.
-    if blacklist == False:
-        print("Извените {0} но Вам отказано в кредите.".format(familia_mane_patronymic))
+
+    familia_mane_patronymic = input('Скажите пожалуйста полностью Вашу: Фамилию,Имя,Отчество\n'
+                                    'Используйте символы \'А-Я,а-я\'\n'
+                                    'Пример : \'Петров Игорь Витальевич\'')
+    familia_mane_patronymic = familia_mane_patronymic.title()
+
+    series_and_number = input("Введите серию и номер паспорта\n"
+                              "                          Пример : 2100 668122 ")
+
+    date_of_birth = input("Введите полностью свою дату рождения\n"
+                          "              Пример : 01.05.1990 ")
+    # Проводим вычислительные действия с датой рождения.
+    # а имено получаем год рождения.
+    years_date_of_birth = int(date_of_birth[6:])
+    this_year = time.localtime()
+    this_year = int (this_year[0])
+    # Выястняем сколько полных лет заямщику(клиент).
+    years = this_year - years_date_of_birth
+
+    if years <18 or years >65:
+        credit = False
+        print("Извените {0} но Вам отказано в кредите!".format(familia_mane_patronymic))
+
     else:
-        # Если из функции пришел ответ True.
-        # Вызоваем функцию для дальнейшего анализа данных.
-        Algoritm_Vidahi_Kredita (years,familia_mane_patronymic)
+        # Вызываем функцию"Черный список"и в этой функцции анализируем персональные данные.
+        blacklist = Scripts.BlackListOfClients.Black_list_of_clients(familia_mane_patronymic,series_and_number,date_of_birth)
+        # Если из функции пришел ответ False.
+        if blacklist == False:
+            print("Извените {0} но Вам отказано в кредите.".format(familia_mane_patronymic))
+        else:
+            # Если из функции пришел ответ True.
+            # Вызоваем функцию для дальнейшего анализа данных.
+            Algoritm_Vidahi_Kredita (years,familia_mane_patronymic)
 
 
 
