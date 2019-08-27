@@ -44,9 +44,9 @@ def Algoritm_Vidahi_Kredita (years,familia_mane_patronymic):
             print("Извените {0} но Вам  отказано в кредите!".format(familia_mane_patronymic))
         else:
 
-            loan_amount = input("Какую сумму хотите взять в кредит ?")
+            loan_amount = int(input("Какую сумму хотите взять в кредит ?"))
 
-            credit_period = input("На какой срок хотите взять кредит (Укажите пожалуйста количество месяцев)")
+            credit_period = int(input("На какой срок хотите взять кредит (Укажите пожалуйста количество месяцев)"))
             # Расчитываем сумму кредита по параметрам.
             calculate = calculate_loan_amount(loan_amount,credit_period,monthly_income,familia_mane_patronymic)
 
@@ -64,9 +64,9 @@ def Algoritm_Vidahi_Kredita (years,familia_mane_patronymic):
 
         monthly_income = int(input("Какой ежемесячный доход заёмщика?"))
 
-        loan_amount = input("Какую сумму хотите взять в кредит ?")
+        loan_amount = int(input("Какую сумму хотите взять в кредит ?"))
 
-        credit_period = input("На какой срок хотите взять кредит (Укажите пожалуйста количество месяцев)")
+        credit_period = int(input("На какой срок хотите взять кредит (Укажите пожалуйста количество месяцев)"))
         # Расчитываем сумму кредита по параметрам.
         calculate = calculate_loan_amount(loan_amount,credit_period,monthly_income,familia_mane_patronymic)
 
