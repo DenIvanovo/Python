@@ -58,7 +58,7 @@ ind = 0 # Это номер индекса.
 for ot in a_lst:
     if a_lst[ind] == response_to_question[ind]:
         number_of_correct_answers.append(1)
-    elif a_lst[ind] != response_to_question[ind]:
+    else:
         ind +=1
         continue
     ind +=1
@@ -88,5 +88,5 @@ if question_to_user == "Y":
         print(x)
     input("Нажмите Enter,чтобы закрыть программу.")
 else:
-
     input("Нажмите Enter,чтобы закрыть программу.")
+
