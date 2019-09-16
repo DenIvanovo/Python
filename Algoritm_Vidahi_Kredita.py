@@ -55,6 +55,9 @@ def Algoritm_Vidahi_Kredita (years,familia_mane_patronymic):
             the_Banks_offer = input('Мы готовы предложить Вам свою сумму! Нажмите \'Y\'если Вам это интерестно,\n'
                                     '                               или нажмите \'N\' если Вам это неинтерестно.')
             if the_Banks_offer == "Y":
+                
+                #Здесь идет алггоритм рассчета 
+                
                 pass
             else:
                 pass
