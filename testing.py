@@ -74,7 +74,7 @@ elif result >= 4:
     message = "Поздравлем Вас!Вы удачно прошли тестирование."
 
 print('\t\t\t\tРеультат тестирования по повышению класицикации\'Кладовщик\'\n'
-     '\t\t\t\tТест проходил '+ '  '+ name + '\n'
+     '\t\t\t\tТест проходил ' + name + '\n'
      '\t\t\t\t' + message +'\n'
      '\t\t\t\tВы ответили правильно на'+" "+ str(result) +" " + wer +'и допустили'+ " "
                                            + str( len(a_lst) - len(number_of_correct_answers))+" "+ rew)
@@ -83,10 +83,13 @@ question_to_user = input("\t\t\t\tХотите посмотреть вопрос
 if question_to_user == "Y":
     int = 0
     for x in questions:
-        x = x.replace("Ответ :" ,"Правильный ответ" + " "+response_to_question[int] +"  " + "Вы ответили" + " " + a_lst[int] )
+
+        x = x.replace("Ответ :" ,"Правильный ответ %s ,Вы ответили  %s" % (response_to_question[int],a_lst[int]))
         int += 1
         print(x)
     input("Нажмите Enter,чтобы закрыть программу.")
 else:
     input("Нажмите Enter,чтобы закрыть программу.")
+
+
 
