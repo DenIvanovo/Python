@@ -14,6 +14,7 @@ while True:
              print("Ошибка ввода")
              continue
          else:
+             request = int(request)
              container.append(request)
              continue
 
