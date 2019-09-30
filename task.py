@@ -7,16 +7,22 @@ container = []
 
 while True:
      request = input("Введите число :")
-     if request == "Стоп":
+     if request == "Стоп" or request == "СТОП":
          break
      else:
          if not request.isdecimal():
              print("Ошибка ввода")
              continue
          else:
-             request = int(request)
              container.append(request)
              continue
 
-print(container)
-print("Количество  " + str(len(container)))
+
+transformation = "".join(container)  # Преоброзование "списка" в "строку".
+for x in range(1,10):  # Используем диапозон от 1 до 9.
+    if str(x) in transformation:  # Проверем на вхождения в строку.
+        number = transformation.count(str(x))  # Подсчитывает количество совпадений в строке.
+        print("{0} - Количество {1}".format(x,number))
+
+
+
